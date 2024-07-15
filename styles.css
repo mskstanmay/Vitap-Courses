@@ -109,10 +109,12 @@ h1 {
 }
 
 .course-card.completed {
-  background-color: #e0e0e0; /* Translucent background for completed courses */
-  color: #666; /* Text color for completed courses */
-  opacity: 0.7; /* Slightly transparent */
+  background-color: #e0ffe0; /* Light green background */
+  border-color: #b2f2b2; /* Lighter green border */
+  /*text-decoration: line-through; /* Strikethrough text */
+  opacity: 0.5; /* Slightly transparent to indicate completion */
 }
+
 /* Credit Table Styles */
 .credit-table {
   width: 100%;
@@ -141,9 +143,36 @@ h1 {
   font-weight: bold; /* Bold text for the last row */
 }
 
-
+/* Add styles for completed courses */
+.course-card.completed {
+  background-color: #e0ffe0; /* Light green background */
+  border-color: #b2f2b2; /* Lighter green border */
+  /*text-decoration: line-through; /* Strikethrough text */
+  opacity: 0.5; /* Slightly transparent to indicate completion */
+}
 
 /* Responsive Styles */
+@media (max-width: 1024px) {
+  /* Adjust the header padding */
+  #header {
+    padding: 15px;
+  }
+
+  /* Increase the margin for controls to prevent crowding */
+  #controls {
+    margin: 15px 0;
+  }
+
+  .view-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .course-card {
+    width: 250px; /* Adjust card width for mid-sized screens */
+  }
+}
+
 @media (max-width: 768px) {
   .course-container {
     padding: 10px;
@@ -152,10 +181,45 @@ h1 {
   .course-card {
     width: calc(50% - 20px);
   }
+
+  .view-button {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .section {
+    padding: 8px; /* Slightly reduced padding for sections */
+  }
+
+  .course-card h2 {
+    font-size: 16px; /* Slightly smaller font size for course card headings */
+  }
+
+  .course-card p {
+    font-size: 12px; /* Slightly smaller font size for course card text */
+  }
 }
 
 @media (max-width: 480px) {
   .course-card {
     width: 100%;
+  }
+
+  .view-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .section {
+    margin: 10px 0; /* Reduced margin for sections */
+    padding: 8px; /* Reduced padding for sections */
+  }
+
+  .course-card h2 {
+    font-size: 14px; /* Even smaller font size for course card headings */
+  }
+
+  .course-card p {
+    font-size: 10px; /* Even smaller font size for course card text */
   }
 }
