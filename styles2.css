@@ -9,9 +9,9 @@ body {
 #header {
   text-align: center;
   padding: 20px;
-  background-color: #0074D9;
+  background-color: #0074D9; /* Blue */
   color: white;
-  border-bottom: 4px solid #0056a0;
+  border-bottom: 4px solid #0056a0; /* Darker Blue */
 }
 
 h1 {
@@ -29,7 +29,7 @@ h1 {
   padding: 10px 20px;
   font-size: 16px;
   margin: 0 10px;
-  background-color: #0074D9;
+  background-color: #0074D9; /* Blue */
   color: white;
   border: none;
   border-radius: 5px;
@@ -37,7 +37,7 @@ h1 {
 }
 
 .view-button:hover {
-  background-color: #0056a0;
+  background-color: #0056a0; /* Darker Blue */
 }
 
 /* Course Container Styles */
@@ -67,27 +67,32 @@ h1 {
 
 /* Basket Headings Color */
 .section[data-type='basket'] h2 {
-  background-color: #FFDD00;  /* Yellow for Baskets */
+  background-color: #FFDD00; /* Yellow for Baskets */
 }
 
-/* Heading Colors */
+/* Type Headings Colors */
+.section[data-type='type'] h2 {
+  background-color: #0074D9; /* Blue for Types */
+}
+
+/* Heading Colors Based on Credits */
 .section[data-credits='1'] h2 {
-  background-color: #FF4136;  /* Red for 1 Credit */
+  background-color: #FF4136; /* Red for 1 Credit */
 }
 
 .section[data-credits='2'] h2 {
-  background-color: #FF851B;  /* Orange for 2 Credits */
+  background-color: #FF851B; /* Orange for 2 Credits */
 }
 
 .section[data-credits='3'] h2 {
-  background-color: #2ECC40;  /* Green for 3 Credits */
+  background-color: #2ECC40; /* Green for 3 Credits */
 }
 
 .section[data-credits='4'] h2 {
-  background-color: #0074D9;  /* Blue for 4 Credits */
+  background-color: #F012BE; /* Pink for 4 Credits */
 }
 
-/* Cards Styles */
+/* Course Cards Styles */
 .course-card {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -109,39 +114,16 @@ h1 {
 }
 
 .course-card.completed {
-  background-color: #e0e0e0; /* Translucent background for completed courses */
+  background-color: #e0e0e0; /* Light gray for completed courses */
   color: #666; /* Text color for completed courses */
   opacity: 0.7; /* Slightly transparent */
 }
-/* Credit Table Styles */
-.credit-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  background-color: #f9f9f9; /* Light background for the table */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Light shadow for the table */
+
+/* Fix for UC type background color */
+.course-card[data-type='UC'] {
+  background-color: #0074D9; /* Blue background for UC type */
+  color: #fff; /* White text for UC type */
 }
-
-.credit-table th, .credit-table td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-.credit-table th {
-  background-color: #0074D9; /* Blue background for headers */
-  color: white;
-}
-
-.credit-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Alternating row colors */
-}
-
-.credit-table tr:last-child td {
-  font-weight: bold; /* Bold text for the last row */
-}
-
-
 
 /* Responsive Styles */
 @media (max-width: 768px) {
