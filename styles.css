@@ -86,124 +86,76 @@ h1 {
 .section[data-credits='4'] h2 {
   background-color: #0074D9;  /* Blue for 4 Credits */
 }
-/* styles.css */
 
-/* Ensure that the credit table adjusts for small screens */
-.credit-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.credit-table th, .credit-table td {
-  padding: 10px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
-
-.credit-table th {
-  background-color: #f4f4f4;
-}
-
-.credit-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* Adjust course container for mobile view */
-#course-container {
-  padding: 10px;
-}
-
-/* Course cards styling */
+/* Cards Styles */
 .course-card {
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
 }
 
 .course-card h2 {
   margin-top: 0;
+  font-size: 18px;
+  color: #333;
 }
 
-/* Make sure the credit table is responsive */
-@media (max-width: 768px) {
-  .credit-table {
-    font-size: 14px;
-  }
-
-  .credit-table th, .credit-table td {
-    padding: 8px;
-  }
-
-  .credit-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
-
-/* Adjust section title for smaller screens */
-@media (max-width: 768px) {
-  .section {
-    margin-bottom: 20px;
-  }
-
-  .section h2 {
-    font-size: 18px;
-  }
-}
-
-/* Stack course details in a column for small screens */
 .course-card p {
-  display: block;
-  margin: 5px 0;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #666;
 }
 
-/* Make the buttons responsive */
-#view-baskets {
-  font-size: 16px;
-  padding: 10px 15px;
-  margin: 5px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-}
-
-#view-baskets:hover {
-  background-color: #ddd;
-}
-
-/* Add a max-width to ensure the container doesn't get too wide */
-#course-container {
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Optional: Add a margin to ensure the content is not flush with the edges */
-body {
-  margin: 0;
-  padding: 0 10px;
-}
-/* Add styles for completed courses */
 .course-card.completed {
-  background-color: #e0ffe0; /* Light green background */
-  border-color: #b2f2b2; /* Lighter green border */
-  /*text-decoration: line-through; /* Strikethrough text */
-  opacity: 0.5; /* Slightly transparent to indicate completion */
+  background-color: #e0e0e0; /* Translucent background for completed courses */
+  color: #666; /* Text color for completed courses */
+  opacity: 0.7; /* Slightly transparent */
+}
+/* Credit Table Styles */
+.credit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #f9f9f9; /* Light background for the table */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Light shadow for the table */
+}
+
+.credit-table th, .credit-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.credit-table th {
+  background-color: #0074D9; /* Blue background for headers */
+  color: white;
+}
+
+.credit-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternating row colors */
+}
+
+.credit-table tr:last-child td {
+  font-weight: bold; /* Bold text for the last row */
 }
 
 
-/* Responsive course cards */
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .course-card {
+  .course-container {
     padding: 10px;
-    margin-bottom: 10px;
   }
 
-  .course-card h2 {
-    font-size: 16px;
+  .course-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .course-card {
+    width: 100%;
   }
 }
