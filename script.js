@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Science Basket',
         'Project',
         'Humanities & Management',
-        'Clubs' // Ensure Clubs is included in the order
+        'Clubs'  // Ensure Clubs is included in the order
       ];
 
       // Add rows for each category with the sum of UC credits and total credits
@@ -67,79 +67,72 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // Add the total credits row
-      const totalCredits = Object.values(categories).flat().reduce((sum, course) => sum + course.data.credits, 0);
+      const totalCredits = Object.values(categories).flat().reduce((sum, course) => sum + course.data.credits, 0) + 2;  // Add 2 for the "Clubs" course
       const totalRow = document.createElement('tr');
       totalRow.innerHTML = `
         <td><strong>Total Credits</strong></td>
-        <td><strong>${totalUC +2}</strong></td> <!-- Total UC Credits in UC column. Add two for clubs -->
-        <td><strong>${totalCredits+2}</strong></td> <!-- Total Credits in Credits column. Add two for clubs-->
+        <td><strong>${totalUC + 2}</strong></td> <!-- Total UC Credits in UC column. Add two for clubs -->
+        <td><strong>${totalCredits}</strong></td> <!-- Total Credits in Credits column. Add two for clubs-->
       `;
       totalRow.style.fontWeight = 'bold'; // Make the total credits calculation bold
       creditTable.appendChild(totalRow);
 
       courseContainer.appendChild(creditTable);
-    } else if (view === 'types') {
-      courseData.nodes.filter(node => node.data.type && node.data.type !== 'Top Level')
-        .forEach(course => {
-          if (!categories[course.data.type]) {
-            categories[course.data.type] = [];
+
+      // Show the courses
+      for (const [category, courses] of Object.entries(categories)) {
+        const section = document.createElement('div');
+        section.classList.add('section');
+        section.dataset.credits = Math.max(...courses.map(course => course.data.credits)); // Set the max credits to decide color
+        section.dataset.type = 'basket'; // Add type attribute for CSS
+
+        const sectionTitle = document.createElement('h2');
+        sectionTitle.textContent = `Category: ${category}`;
+        section.appendChild(sectionTitle);
+
+        // Sort courses by credits and place completed courses at the end
+        courses.sort((a, b) => {
+          if (a.data.completed === b.data.completed) {
+            return b.data.credits - a.data.credits;
           }
-          categories[course.data.type].push(course);
+          return a.data.completed - b.data.completed;
         });
-    }
 
-    for (const [category, courses] of Object.entries(categories)) {
-      const section = document.createElement('div');
-      section.classList.add('section');
-      section.dataset.credits = Math.max(...courses.map(course => course.data.credits)); // Set the max credits to decide color
-      section.dataset.type = view === 'baskets' ? 'basket' : 'type'; // Add type attribute for CSS
+        courses.forEach(course => {
+          const card = document.createElement('div');
+          card.classList.add('course-card');
+          if (course.data.completed) {
+            card.classList.add('completed');
+          }
+          card.dataset.credits = course.data.credits; // Add credits data attribute for CSS
+          card.dataset.type = course.data.type; // Add type data attribute for CSS
 
-      const sectionTitle = document.createElement('h2');
-      sectionTitle.textContent = view === 'baskets' ? `Category: ${category}` : `Type: ${category}`;
-      section.appendChild(sectionTitle);
+          let courseDetails = `
+            <h2>${course.data.name}</h2>
+            <p><strong>ID:</strong> ${course.data.id}</p>
+            <p><strong>Credits:</strong> ${course.data.credits}</p>
+            <p><strong>Type:</strong> ${course.data.type}</p>
+          `;
 
-      // Sort courses by credits and place completed courses at the end
-      courses.sort((a, b) => {
-        if (a.data.completed === b.data.completed) {
-          return b.data.credits - a.data.credits;
-        }
-        return a.data.completed - b.data.completed;
-      });
-
-      courses.forEach(course => {
-        const card = document.createElement('div');
-        card.classList.add('course-card');
-        if (course.data.completed) {
-          card.classList.add('completed');
-        }
-        card.dataset.credits = course.data.credits; // Add credits data attribute for CSS
-        card.dataset.type = course.data.type; // Add type data attribute for CSS
-
-        let courseDetails = `
-          <h2>${course.data.name}</h2>
-          <p><strong>ID:</strong> ${course.data.id}</p>
-          <p><strong>Credits:</strong> ${course.data.credits}</p>
-          <p><strong>Type:</strong> ${course.data.type}</p>
-        `;
-
-        if (view !== 'baskets') {
           courseDetails += `<p><strong>Basket:</strong> ${course.data.basket}</p>`;
-        }
 
-        if (course.data.prerequisite) {
-          courseDetails += `<p><strong>Pre-Requisites:</strong> ${course.data.prerequisite}</p>`;
-        }
+          if (course.data.prerequisite) {
+            courseDetails += `<p><strong>Pre-Requisites:</strong> ${course.data.prerequisite}</p>`;
+          }
 
-        if (course.data.antirequisite) {
-          courseDetails += `<p><strong>Anti-Requisites:</strong> ${course.data.antirequisite}</p>`;
-        }
+          if (course.data.antirequisite) {
+            courseDetails += `<p><strong>Anti-Requisites:</strong> ${course.data.antirequisite}</p>`;
+          }
 
-        card.innerHTML = courseDetails;
-        section.appendChild(card);
-      });
+          card.innerHTML = courseDetails;
+          section.appendChild(card);
+        });
 
-      courseContainer.appendChild(section);
+        courseContainer.appendChild(section);
+      }
     }
+
+    // Removed the 'types' view logic
   }
 
   // Initial display on page load
@@ -150,7 +143,5 @@ document.addEventListener('DOMContentLoaded', () => {
     displayCourses('baskets');
   });
 
-  document.getElementById('view-types').addEventListener('click', () => {
-    displayCourses('types');
-  });
+  // Removed the event listener for the By Types button
 });
