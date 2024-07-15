@@ -1,0 +1,136 @@
+/* General Body and Header Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #header {
+    text-align: center;
+    padding: 20px;
+    background-color: #0074D9;
+    color: white;
+    border-bottom: 4px solid #0056a0;
+  }
+  
+  h1 {
+    margin: 0;
+  }
+  
+  /* Controls Styles */
+  #controls {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  #view-select {
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  
+  /* Legend Styles */
+  #legend {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 600px;
+  }
+  
+  h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .legend-text {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Cytoscape Container Styles */
+  #cy {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+  }
+  
+  /* Node Styles */
+  .node {
+    background-color: #ffffff;
+    border-radius: 10px; /* Rounded edges for nodes */
+    border: 2px solid #333; /* Border for nodes */
+    color: #333; /* Text color */
+    font-size: 12px; /* Font size */
+    text-align: center; /* Center text */
+    padding: 5px; /* Padding */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Shadow */
+  }
+  
+  /* Edge Styles */
+  .edge {
+    line-color: #aaa; /* Light gray for edges */
+    target-arrow-shape: triangle; /* Arrow for direction */
+    target-arrow-color: #aaa;
+  }
+  
+  /* Legend Styles */
+  #legend {
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .legend-text {
+    font-size: 14px;
+  }
+  
+  /* General styles for container and legend */
+  #cy {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ddd;
+  }
+  
+  #view-select {
+    margin: 10px 0;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
